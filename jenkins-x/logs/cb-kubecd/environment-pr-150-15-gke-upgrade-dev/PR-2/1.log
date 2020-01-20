@@ -1,0 +1,69 @@
+
+Showing logs for build [32mcb-kubecd-environment-pr-150-15-tvnwx-1[0m stage [32mpr-checks[0m and container [32mstep-credential-initializer-4smk6[0m
+{"level":"warn","ts":1579512873.2428365,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/master\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1579512873.2451894,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+
+Showing logs for build [32mcb-kubecd-environment-pr-150-15-tvnwx-1[0m stage [32mpr-checks[0m and container [32mstep-working-dir-initializer-rb7nc[0m
+{"level":"warn","ts":1579512874.3650718,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1579512874.3765166,"logger":"fallback-logger","caller":"bash/main.go:65","msg":"Successfully executed command \"mkdir -p /workspace/source\""}
+
+Showing logs for build [32mcb-kubecd-environment-pr-150-15-tvnwx-1[0m stage [32mpr-checks[0m and container [32mstep-place-tools[0m
+
+Showing logs for build [32mcb-kubecd-environment-pr-150-15-tvnwx-1[0m stage [32mpr-checks[0m and container [32mstep-git-source-cb-kubecd-environment-pr-150-15-6psqz[0m
+{"level":"warn","ts":1579512880.5493479,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/master\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1579512882.1011033,"logger":"fallback-logger","caller":"git/git.go:102","msg":"Successfully cloned https://github.com/cb-kubecd/environment-pr-150-15-gke-upgrade-dev.git @ master in path /workspace/source"}
+
+Showing logs for build [32mcb-kubecd-environment-pr-150-15-tvnwx-1[0m stage [32mpr-checks[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:2d2509f7e85b2fdddca138864f5682c06b933049,2:01fdf35029131e981cb01bc8916a53c60583ba60
+DEBUG: ran git fetch --unshallow origin 01fdf35029131e981cb01bc8916a53c60583ba60: 2d2509f7e85b2fdddca138864f5682c06b933049: in 
+DEBUG: ran git checkout master in 
+DEBUG: ran git reset --hard 2d2509f7e85b2fdddca138864f5682c06b933049 in 
+DEBUG: ran clean --force -d . in 
+DEBUG: ran git merge 01fdf35029131e981cb01bc8916a53c60583ba60 in 
+Merged SHA 01fdf35029131e981cb01bc8916a53c60583ba60 with commit message 'chore(deps): bump https://github.com/cb-kubecd/bdd-spring-1579512780.git' into base branch master
+
+Showing logs for build [32mcb-kubecd-environment-pr-150-15-tvnwx-1[0m stage [32mpr-checks[0m and container [32mstep-verify-parameters[0m
+
+Showing logs for build [32mcb-kubecd-environment-pr-150-15-tvnwx-1[0m stage [32mpr-checks[0m and container [32mstep-lint-env-helm[0m
+rm -rf charts
+rm -rf requirements.lock
+helm init --client-only
+Creating /builder/home/.helm 
+Creating /builder/home/.helm/repository 
+Creating /builder/home/.helm/repository/cache 
+Creating /builder/home/.helm/repository/local 
+Creating /builder/home/.helm/plugins 
+Creating /builder/home/.helm/starters 
+Creating /builder/home/.helm/cache/archive 
+Creating /builder/home/.helm/repository/repositories.yaml 
+Adding stable repo with URL: https://kubernetes-charts.storage.googleapis.com 
+Adding local repo with URL: http://127.0.0.1:8879/charts 
+$HELM_HOME has been configured at /builder/home/.helm.
+Not installing Tiller due to 'client-only' flag having been set
+helm repo add jenkins-x https://storage.googleapis.com/chartmuseum.jenkins-x.io
+"jenkins-x" has been added to your repositories
+helm repo add bitnami https://charts.bitnami.com/bitnami
+"bitnami" has been added to your repositories
+helm repo add stable https://kubernetes-charts.storage.googleapis.com
+"stable" has been added to your repositories
+** step helm build --boot --provider-values-dir=../kubeProviders
+WARNING: could not find a git repository in the directory .: No git conf dir found
+Ignoring templates/.gitignore
+Applying the kubernetes overrides at ../kubeProviders/gke/values.tmpl.yaml
+Verifying the helm requirements versions in dir: . using version stream URL: https://github.com/cloudbees/cloudbees-jenkins-x-versions.git and git ref: 9cef01d7e3eeb9bf6b4f6cca5ef8342fdb93e6ed
+Wrote chart values.yaml values.yaml generated from directory tree
+WARNING: No $CHART_REPOSITORY defined so using the default value of: http://jenkins-x-chartmuseum:8080
+Adding missing Helm repo: jenkins-x-chartmuseum http://jenkins-x-chartmuseum:8080
+WARNING: No secrets found on "helm/repos" due: reading the secret "helm/repos" from vault: no secret "helm/repos" not found in vault
+Read credentials for http://jenkins-x-chartmuseum:8080 from vault helm/repos
+Successfully added Helm repository jenkins-x-chartmuseum.
+WARNING: No $CHART_REPOSITORY defined so using the default value of: http://jenkins-x-chartmuseum:8080
+Adding missing Helm repo: chartmuseum.jenkins-x.io http://chartmuseum.jenkins-x.io
+WARNING: No secrets found on "helm/repos" due: reading the secret "helm/repos" from vault: no secret "helm/repos" not found in vault
+Read credentials for http://chartmuseum.jenkins-x.io from vault helm/repos
+Successfully added Helm repository chartmuseum.jenkins-x.io.
+helm lint .
+==> Linting .
+Lint OK
+
+1 chart(s) linted, no failures
