@@ -1,0 +1,40 @@
+
+Showing logs for build [32mmeta-cb-kubecd-environment-pr-1-w4chg-1[0m stage [32mmeta-pipeline[0m and container [32mstep-credential-initializer-kqdvd[0m
+{"level":"warn","ts":1579512722.9524999,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/master\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1579512722.9532843,"logger":"fallback-logger","caller":"creds-init/main.go:40","msg":"Credentials initialized."}
+
+Showing logs for build [32mmeta-cb-kubecd-environment-pr-1-w4chg-1[0m stage [32mmeta-pipeline[0m and container [32mstep-working-dir-initializer-whcgc[0m
+{"level":"warn","ts":1579512725.8455973,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: open /var/run/ko/HEAD: no such file or directory"}
+{"level":"info","ts":1579512725.8473558,"logger":"fallback-logger","caller":"bash/main.go:65","msg":"Successfully executed command \"mkdir -p /workspace/source\""}
+
+Showing logs for build [32mmeta-cb-kubecd-environment-pr-1-w4chg-1[0m stage [32mmeta-pipeline[0m and container [32mstep-place-tools[0m
+
+Showing logs for build [32mmeta-cb-kubecd-environment-pr-1-w4chg-1[0m stage [32mmeta-pipeline[0m and container [32mstep-git-source-meta-cb-kubecd-environment-pr-1-z5jkw[0m
+{"level":"warn","ts":1579512736.378043,"logger":"fallback-logger","caller":"logging/config.go:69","msg":"Fetch GitHub commit ID from kodata failed: \"ref: refs/heads/master\" is not a valid GitHub commit ID"}
+{"level":"info","ts":1579512737.6673334,"logger":"fallback-logger","caller":"git/git.go:102","msg":"Successfully cloned https://github.com/cb-kubecd/environment-pr-150-15-gke-upgrade-dev.git @ 2d2509f7e85b2fdddca138864f5682c06b933049 in path /workspace/source"}
+
+Showing logs for build [32mmeta-cb-kubecd-environment-pr-1-w4chg-1[0m stage [32mmeta-pipeline[0m and container [32mstep-git-merge[0m
+Using SHAs from PULL_REFS=master:2d2509f7e85b2fdddca138864f5682c06b933049
+WARNING: no SHAs to merge, falling back to initial cloned commit
+
+Showing logs for build [32mmeta-cb-kubecd-environment-pr-1-w4chg-1[0m stage [32mmeta-pipeline[0m and container [32mstep-merge-pull-refs[0m
+SKIP merge-pull-refs: Nothing to merge
+
+Showing logs for build [32mmeta-cb-kubecd-environment-pr-1-w4chg-1[0m stage [32mmeta-pipeline[0m and container [32mstep-create-effective-pipeline[0m
+Effective pipeline written to jenkins-x-promotion-effective.yml
+
+Showing logs for build [32mmeta-cb-kubecd-environment-pr-1-w4chg-1[0m stage [32mmeta-pipeline[0m and container [32mstep-create-tekton-crds[0m
+? A local Jenkins X versions repository already exists, pulling the latest: Yes
+running command: ** step next-version --use-git-tag-only --tag
+created new version: 0.0.1 and written to file: ./VERSION
+Updating chart version in systems/acme/Chart.yaml to 0.0.1
+Tag v0.0.1 created and pushed to remote origin
+
+PipelineActivity for cb-kubecd-environment-pr-150-15-gke-upgrade-dev-master-1
+Applying changes 
+upserted PipelineResource cb-kubecd-environment-pr-150-15 for the git repository https://github.com/cb-kubecd/environment-pr-150-15-gke-upgrade-dev.git
+upserted Task cb-kubecd-environment-pr-150-15-release-1
+upserted Pipeline cb-kubecd-environment-pr-150-15-1
+error: failed to apply Tekton CRDs: failed to create the pipelineRun in namespace **: Failed to create PipelineRun cb-kubecd-environment-pr-150-15-1: pipelineruns.tekton.dev "cb-kubecd-environment-pr-150-15-1" already exists
+[31m
+Pipeline failed on stage 'meta-pipeline' : container 'step-create-tekton-crds'. The execution of the pipeline has stopped.[0m
